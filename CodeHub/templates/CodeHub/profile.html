@@ -1,0 +1,80 @@
+{%extends 'CodeHub/form_base.html'%}
+{%block content%}
+<div class="content">
+    <h5 class="display-5">USER DETAILS</h5>
+    <table class="table table-striped table-hover table-borderless">
+        <colgroup>
+            <col style="width:50%;">
+            <col style="width:50%;">
+        </colgroup>
+        <thead class="table-info">
+            <tr>
+                <th>Field</th>
+                <th>Detail</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Name</td>
+                <td>{{userob.first_name}} {{userob.last_name}}</td>
+            </tr>
+            <tr>
+                <td>Username</td>
+                <td>{{userob.username}}</td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td>{{userob.email}}</td>
+            </tr>
+            {%if cf%}
+                <tr>
+                    <td>Codeforces ID</td>
+                    <td>{{cf.handle}}</td>
+                </tr>
+                <tr>
+                    <td>Current Codeforces Rating</td>
+                    <td>{{cf.rating}} ({{cf.rank}})</td>
+                </tr>
+                <tr>
+                    <td>Max Codeforces Rating</td>
+                    <td>{{cf.maxRating}} ({{cf.maxRank}})</td>
+                </tr>
+            {%else%}
+                <tr>
+                    <td>Codeforces ID</td>
+                    <td>Not Provided</td>
+                </tr>
+            {%endif%}
+            <tr>
+                <td>Questions</td>
+                <td>{{contri.no_of_q}}</td>
+            </tr>
+            <tr>
+                <td>Answers</td>
+                <td>{{contri.no_of_a}}</td>
+            </tr>
+        </tbody>
+    </table>
+    {%if request.user == userob%}
+        <div class="center">
+            <button type="button" class="form-btn" data-bs-toggle="modal" data-bs-target="#accModal-{{userob.username}}">Delete your Account</button>
+        </div>
+        <div class="modal fade" id="accModal-{{userob.username}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="float:right;"></button>
+                        <h5 class="modal-title" id="exampleModalLabel">Do you want to delete your account?</h5>
+                        <form method="POST" action="{%url 'delete_acc' string=userob.username%}">
+                            {%csrf_token%}
+                            <div class="center">
+                                <button type="submit" class="form-btn" name="yes">YES</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {%endif%}
+</div>
+{%endblock%}

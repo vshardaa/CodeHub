@@ -1,0 +1,13 @@
+{%extends 'CodeHub/form_base.html'%}
+{%block content%}
+<div class="content">
+    <h5 class="display-5">SIGN UP</h5>
+    <form method="POST" class="log-form">
+        {%csrf_token%}
+        {{form.as_p}}
+        <div class="center">
+            <button type="submit" class="form-btn">Sign Up</button>
+        </div>
+    </form>
+</div>
+{%endblock%}

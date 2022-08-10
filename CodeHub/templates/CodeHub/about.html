@@ -1,0 +1,21 @@
+{%extends 'CodeHub/form_base.html'%}
+{%load static%}
+{%block content%}
+<div class="content">
+    <h5 class="display-5">ABOUT</h5>
+    <ul>
+        <li>CodeHub is a Question and Answer Website on which registered users can ask and answer questions about programming.</li>
+        <li>The <a href="https://django-ckeditor.readthedocs.io/en/latest/" target="_blank">Django CKEditor Application</a> has been integrated for adding answers.</li>
+        <li>The <a href="https://kontests.net/api" target="_blank">Kontests API</a> has been used to display the upcoming contest schedule of popular programming websites.</li>
+        <li>The <a href="https://codeforces.com/apiHelp" target="_blank">Codeforces API</a> has been used to display the ratings of users on their profile page.</li>
+        <li>The website has been developed using HTML, CSS, JavaScript and Django.</li>
+    </ul>
+    <hr>
+    <div class="center">
+        <b>Suryansh Singh (IIT BHU Varanasi)</b><br>
+        <img src="{%static 'images/Google.png'%}" style="height:40px;width:40px"> : suryanshsingh640@gmail.com<br>
+        <a href="https://www.facebook.com/suryansh.dhoni/" target="_blank">{%include './icons/fb.svg'%}</a>
+        <a href="https://github.com/decapitator007" target="_blank"><img src="{%static 'images/GitHub.png'%}" style="height:40px;width:40px"></a>
+    </div>
+</div>
+{%endblock%}
